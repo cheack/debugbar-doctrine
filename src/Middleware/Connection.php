@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cheack\DebugbarDoctrine\Middleware;
 
 use Doctrine\DBAL\Driver\Middleware\AbstractConnectionMiddleware;
@@ -10,19 +12,13 @@ class Connection extends AbstractConnectionMiddleware
 {
     use ExecutionTime;
 
-    /**
-     * {@inheritDoc}
-     */
     public function prepare(string $sql): StatementInterface
     {
         return new Statement(parent::prepare($sql), $sql);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function query(string $sql): Result
     {
-        return $this->time(fn() => parent::query($sql), $sql);
+        return $this->time(fn () => parent::query($sql), $sql);
     }
 }
