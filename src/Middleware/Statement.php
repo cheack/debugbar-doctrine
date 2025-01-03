@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cheack\DebugbarDoctrine\Middleware;
 
 use Doctrine\DBAL\Driver\Middleware\AbstractStatementMiddleware;
@@ -11,17 +13,13 @@ class Statement extends AbstractStatementMiddleware
 {
     use ExecutionTime;
 
+    /** @var array<mixed> */
     public array $params = [];
 
-    /**
-     * @param StatementInterface $statement
-     * @param string             $sql
-     */
     public function __construct(
         StatementInterface $statement,
         private string $sql,
-    )
-    {
+    ) {
         parent::__construct($statement);
     }
 
@@ -40,6 +38,6 @@ class Statement extends AbstractStatementMiddleware
      */
     public function execute($params = null): Result
     {
-        return $this->time(fn() => parent::execute($params), $this->sql, $this->params);
+        return $this->time(fn () => parent::execute($params), $this->sql, $this->params);
     }
 }
