@@ -19,6 +19,8 @@ class StubDatabaseConnection extends Connection
     public function __construct()
     {
         // No need to call the parent constructor
+        $this->useDefaultQueryGrammar();
+        $this->useDefaultPostProcessor();
     }
 
     public function getName(): mixed
