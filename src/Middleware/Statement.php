@@ -26,11 +26,11 @@ class Statement extends AbstractStatementMiddleware
     /**
      * {@inheritDoc}
      */
-    public function bindValue($param, $value, $type = ParameterType::STRING)
+    public function bindValue($param, $value, $type = ParameterType::STRING): void
     {
         $this->params[$param] = $value;
 
-        return parent::bindValue($param, $value, $type);
+        parent::bindValue($param, $value, $type);
     }
 
     /**
