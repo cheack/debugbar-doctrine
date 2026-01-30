@@ -27,4 +27,9 @@ class StubDatabaseConnection extends Connection
     {
         return null;
     }
+
+    public function getDatabaseName(): string
+    {
+        return '';
+    }
 }
