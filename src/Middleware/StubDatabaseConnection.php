@@ -16,7 +16,7 @@ use Illuminate\Database\Connection;
  */
 class StubDatabaseConnection extends Connection
 {
-    protected array $config = [
+    protected $config = [
         'driver' => 'stub',
     ];
 
