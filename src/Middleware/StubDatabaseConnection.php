@@ -16,6 +16,10 @@ use Illuminate\Database\Connection;
  */
 class StubDatabaseConnection extends Connection
 {
+    protected array $config = [
+        'driver' => 'stub',
+    ];
+
     public function __construct()
     {
         // No need to call the parent constructor
